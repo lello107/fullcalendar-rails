@@ -1,5 +1,5 @@
 /*!
- * FullCalendar Scheduler v1.8.0
+ * FullCalendar Scheduler v1.8.1
  * Docs & License: https://fullcalendar.io/scheduler/
  * (c) 2017 Adam Shaw
  */
@@ -23,7 +23,7 @@
 ;;
 
 var FC = $.fullCalendar;
-FC.schedulerVersion = "1.8.0";
+FC.schedulerVersion = "1.8.1";
 
 /*
 When the required internal version is upped,
@@ -3233,6 +3233,7 @@ TimelineView = (function(superClass) {
     this.normalizedUnzonedRange = new UnzonedRange(this.normalizedUnzonedStart, this.normalizedUnzonedEnd);
     slotDates = [];
     date = this.normalizedUnzonedStart.clone();
+    this.calendar.localizeMoment(date);
     while (date < this.normalizedUnzonedEnd) {
       if (this.isValidDate(date)) {
         slotDates.push(date.clone());
@@ -5795,6 +5796,7 @@ ResourceTimelineView = (function(superClass) {
         group = new HRowGroup(this, spec, groupValue);
       }
       parent.addChild(group, i);
+      group.renderSkeleton();
     }
     return group;
   };
@@ -6184,7 +6186,7 @@ FC.views.month.queryResourceClass = function(viewSpec) {
   }
 };
 
-RELEASE_DATE = '2017-10-10';
+RELEASE_DATE = '2017-10-23';
 
 UPGRADE_WINDOW = {
   years: 1,
